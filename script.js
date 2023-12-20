@@ -30,7 +30,6 @@ function fetchAdditionalDetails(countryName, commonName) {
     fetch(weatherUrl)
         .then(res => res.json())
         .then(weatherData => {
-            // Fetch additional country-specific data
             var countryDetailsUrl = `https://restcountries.com/v3.1/name/${commonName}`;
             return fetch(countryDetailsUrl)
                 .then(res => res.json())
@@ -45,19 +44,19 @@ function displayAdditionalDetails(weatherData, countryDetails) {
     var oldContent = document.getElementById("resultscontainer");
     var additionalDetailsDiv = document.createElement("div");
 
-    additionalDetailsDiv.innerHTML = `Country Name: ${countryDetails.name.common}<br>
-   
-    Population: ${countryDetails.population}<br>
-    Independent: ${countryDetails.independent}<br>
-    Weather Details:<br>
-    Temperature: ${weatherData.main.temp} °C<br>
-    Feels Like: ${weatherData.main.feels_like}°C<br>
-    Min Temperature: ${weatherData.main.temp_min}°C<br>
-    Max Temperature: ${weatherData.main.temp_max} °C<br>`;
-                                      
+    additionalDetailsDiv.innerHTML = `Country Name: ${countryDetails.name.common}<br> 
+                                      Population: ${countryDetails.population}<br>
+                                      Region: ${countryDetails.region}<br>
+                                      Capital: ${countryDetails.capital}<br><br>
+                                      <img src="${countryDetails.flags.png}" alt="country flag"><br>
+                                      <h><b>Weather Details-</b></h><br>
+                                      <b>Temperature:<h2> ${weatherData.main.temp}°C </h2></b><br>
+                                      Feels Like: ${weatherData.main.feels_like}°C<br>
+                                      Min Temperature: ${weatherData.main.temp_min}°C<br>
+                                      Max Temperature: ${weatherData.main.temp_max} °C<br>`;
+
 
     additionalDetailsDiv.classList.add("additionalDetailsStyle");
     oldContent.appendChild(additionalDetailsDiv);
 }
 
-// Flags: ${countryDetails.flags.png}<br>
