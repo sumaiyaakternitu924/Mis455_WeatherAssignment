@@ -30,5 +30,41 @@ header{
 .detailsbutton:hover{
     background-color: rgba(28, 146, 123, 0.462);
 } 
+footer {
+    margin-top: 15%;
+    color: #fff;
+    text-align: center;
+}
 
+.social-icons{
+    background-color: rgb(58, 57, 57);
+    padding: 30px;
+    
+}
+.social-icons a {
+    background-color: white; 
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 30px;
+}
+.social-icons a:hover {
+    color: red; 
+}
+
+.footerending{
+    
+    text-align: center;
+    padding: 20px;
+    background-color: black;      
+}
+.footerending p{
+    margin-top: 40px;
+    color: white;
+}
+#graycolor{
+    color: gray;
+}
 

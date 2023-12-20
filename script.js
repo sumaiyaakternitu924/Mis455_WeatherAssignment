@@ -1,44 +1,48 @@
 function connect() {
-
     var searchTerm = document.getElementById("searchBox").value;
-
-    var url = `https://api.openweathermap.org/data/2.5/forecast?q=${searchTerm}&appid=7a4b54086e73ae11a4546bb1df43ef4d`;
-    console.log(url);
+    var url = `https://restcountries.com/v3.1/name/${searchTerm}`;
 
     fetch(url)
         .then(res => res.json())
-        .then(data => display(data))
-
+        .then(data => display(data));
 }
 
 function display(data) {
-
-    var weatherInfo = data.list;
-    console.log(weatherInfo);
-
+    var countryInfo = data;
     var oldContent = document.getElementById("resultscontainer");
     oldContent.textContent = "";
 
-    for (var i = 0; i < 5; i++) {
+    var newDiv = document.createElement("div");
 
-        var newDiv = document.createElement("div");
+    newDiv.innerHTML = `Country Name: ${countryInfo[0].name.common}<br>
+                        Official Name: ${countryInfo[0].name.official}<br>
+                        Capital: ${countryInfo[0].capital}<br>
+                        Independent: ${countryInfo[0].independent}
+                        <button onclick="fetchAdditionalDetails('${countryInfo[0].capital}')">More Details</button>`;
 
-        var dt_txt = weatherInfo[i].dt_txt;
-        var todayDate = dt_txt.substr(0, 10);
-        var todayTime = dt_txt.substr(12, 20);
+    newDiv.classList.add("countryStyle");
+    oldContent.appendChild(newDiv);
+}
 
-        newDiv.innerHTML = `Date: ${todayDate}<br>
-                           Time: ${todayTime}<br>
-                           Temperature: ${weatherInfo[i].main.temp}°C<br>
-                           Feels Like: ${weatherInfo[i].main.feels_like}°C<br>
-                           Min Temperature: ${weatherInfo[i].main.temp_min}°C<br>
-                           Max Temperature: ${weatherInfo[i].main.temp_max} °C<br>
-                           Humidity: ${weatherInfo[i].main.humidity}%<br>
-                           Weather: <img src="https://openweathermap.org/img/wn/${weatherInfo[i].weather[0].icon}@2x.png" alt="Weather image">`
+function fetchAdditionalDetails(countryName) {
+    var weatherUrl = `https://api.openweathermap.org/data/2.5/weather?q=${countryName}&appid=7a4b54086e73ae11a4546bb1df43ef4d`;
+
+    fetch(weatherUrl)
+        .then(res => res.json())
+        .then(weatherData => displayAdditionalDetails(weatherData))
+        .catch(error => console.error("Error fetching additional details:", error));
+}
+
+function displayAdditionalDetails(weatherData) {
+    var oldContent = document.getElementById("resultscontainer");
+    var additionalDetailsDiv = document.createElement("div");
+
+    additionalDetailsDiv.innerHTML = `Temperature: ${weatherData.main.temp} °C<br>
+                                      Feels Like: ${weatherData.main.feels_like}°C<br>
+                                      Min Temperature: ${weatherData.main.temp_min}°C<br>
+                                      Max Temperature: ${weatherData.main.temp_max} °C<br>`
 
 
-        newDiv.classList.add("weatherStyle");
-        oldContent.appendChild(newDiv);
-    }
-
+    additionalDetailsDiv.classList.add("additionalDetailsStyle");
+    oldContent.appendChild(additionalDetailsDiv);
 }

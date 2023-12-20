@@ -8,23 +8,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <title>Weather Details</title>
+    <title>Country Details</title>
+
 </head>
 
-<body background="back4.png">
-    
-        <div class="row">
-            <div class="col-md-6 offset-md-3">
-                <h1 class="text-center" style="color: rgb(164, 48, 6);">Weather Details</h1>
+<body background="countryimage.jpg">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h1 class="text-center" style="color: blue;">Country Information</h1>
 
-                <div id="searchsection">
-                    <input type="text" id="searchBox" class="form-control" placeholder="search by city name.....">                   
-                    <button id="btn" onclick="connect()">Search</button>                
-                </div>
-                <div id='resultscontainer' class="row"></div>
+            <div id="searchsection">
+                <input type="text" id="searchBox" class="form-control" placeholder="search by country name.....">
+                <button id="btn" onclick="connect()">Search</button>
             </div>
+
+            <div id='resultscontainer' class="row"></div>
         </div>
-   
+    </div>
 
     <script src="script.js"></script>
 </body>

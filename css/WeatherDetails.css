@@ -5,8 +5,8 @@ body{
     background-size: cover;
 }
 #btn{
-    color: orange;
-    background-color: black;
+    color: white;
+    background-color: rgb(5, 5, 123);
     padding: 10px;
     font-size: 15px;
     width: 110px;
@@ -14,8 +14,8 @@ body{
     border-radius: 5px;
 }
 #btn:hover {
-    background-color: orange;
-    color: white;
+    background-color: white;
+    color: black;
 } 
 #searchsection{
     display: flex;
@@ -24,15 +24,21 @@ body{
 input {
     padding: 10px;    
 } 
-.weatherStyle {
-    border: 3px solid orangered;
+.countryStyle {
+    border: 3px solid rgb(249, 248, 248);
     padding: 5%;
     display: flex;
     flex-direction: column;
-    color: rgb(8, 8, 100);
+    color: white;
+    /* justify-content: center;
+    align-items: center; */
+
     margin: 2rem 2rem;
     text-align: center;   
 }
-.weatherStyle img {
+.countryStyle img {
     width: 40%;
+}
+.additionalDetailsStyle {
+    margin-top: 20px;
 }
