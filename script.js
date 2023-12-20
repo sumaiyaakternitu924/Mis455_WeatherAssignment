@@ -17,7 +17,7 @@ function display(data) {
     newDiv.innerHTML = `Country Name: ${countryInfo[0].name.common}<br>
                         Official Name: ${countryInfo[0].name.official}<br>
                         Capital: ${countryInfo[0].capital}<br>
-                        Independent: ${countryInfo[0].independent}
+                        Independent: ${countryInfo[0].independent}<br>
                         <button onclick="fetchAdditionalDetails('${countryInfo[0].capital}', '${countryInfo[0].name.common}')">More Details</button>`;
 
     newDiv.classList.add("countryStyle");
@@ -45,17 +45,19 @@ function displayAdditionalDetails(weatherData, countryDetails) {
     var oldContent = document.getElementById("resultscontainer");
     var additionalDetailsDiv = document.createElement("div");
 
-    additionalDetailsDiv.innerHTML = `Country Details:<br>
-                                      Country Name: ${countryDetails.name.common}<br>
-                                      Official Name: ${countryDetails.name.official}<br>
-                                      Capital: ${countryDetails.capital}<br>
-                                      Independent: ${countryDetails.independent}<br>
-                                      Weather Details:<br>
-                                      Temperature: ${weatherData.main.temp} °C<br>
-                                      Feels Like: ${weatherData.main.feels_like}°C<br>
-                                      Min Temperature: ${weatherData.main.temp_min}°C<br>
-                                      Max Temperature: ${weatherData.main.temp_max} °C<br>`;
+    additionalDetailsDiv.innerHTML = `Country Name: ${countryDetails.name.common}<br>
+   
+    Population: ${countryDetails.population}<br>
+    Independent: ${countryDetails.independent}<br>
+    Weather Details:<br>
+    Temperature: ${weatherData.main.temp} °C<br>
+    Feels Like: ${weatherData.main.feels_like}°C<br>
+    Min Temperature: ${weatherData.main.temp_min}°C<br>
+    Max Temperature: ${weatherData.main.temp_max} °C<br>`;
+                                      
 
     additionalDetailsDiv.classList.add("additionalDetailsStyle");
     oldContent.appendChild(additionalDetailsDiv);
 }
+
+// Flags: ${countryDetails.flags.png}<br>
